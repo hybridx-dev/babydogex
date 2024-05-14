@@ -3,6 +3,8 @@
 import { useAccount } from "wagmi";
 import { Convert } from "./Convert";
 import { ComponentProps, useState } from "react";
+import { MintNFT } from "./MintNFT";
+import { BurnNFT } from "./BurnNFT";
 
 type ToolsItemProps = {
     title: string;
@@ -37,8 +39,8 @@ export const ToolsHybridNFT = () => {
             </div>
 
             {tab === 'Convert' && <Convert/>}
-            {tab === 'Burn NFT' && <p>burn</p>}
-            {tab === 'Mint NFT' && <p>mint</p>}
+            {tab === 'Burn NFT' && <BurnNFT/>}
+            {tab === 'Mint NFT' && <MintNFT/>}
         </div>
     );
 }

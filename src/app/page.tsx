@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <div className="flex-grow flex-col md:flex-row flex justify-between items-center gap-12">
-      <div className="z-10 p-4">
+      <div className="z-10 p-4 mx-auto">
         <Image 
             src={'/assets/babydoge-icon2.png'}
             alt=""
@@ -34,7 +34,7 @@ export default function Home() {
       </div>
 
       <div className="mx-auto z-10">
-        <div className="bg-[#2A272A] max-w-[20rem] rounded-lg shadow-xl border border-solid border-gray-700">
+        <div className="bg-[#2A272A] max-w-[25rem] rounded-lg shadow-xl border border-solid border-gray-700">
           <ToolsHybridNFT/>
         </div>
       </div>
