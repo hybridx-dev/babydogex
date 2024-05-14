@@ -24,7 +24,7 @@ export const BurnNFT = () => {
                 {Array(10).fill({}).map((v, i) => (
                     <Image
                         key={`nft_${i}`}
-                        src={`https://ipfs.io/ipfs/QmcJygK3B27ZnebsPjZ5DDJF4G5FhTPJcQHqc4mm743Su5/0.png`}
+                        src={`https://ipfs.io/ipfs/QmcJygK3B27ZnebsPjZ5DDJF4G5FhTPJcQHqc4mm743Su5/${i}.png`}
                         placeholder="blur"
                         blurDataURL={RGBDataURL()}
                         width={150}

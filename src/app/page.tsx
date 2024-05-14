@@ -33,7 +33,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mx-auto z-10">
+      <div className={`mx-auto z-10 ${inter.className}`}>
         <div className="bg-[#2A272A] max-w-[25rem] rounded-lg shadow-xl border border-solid border-gray-700">
           <ToolsHybridNFT/>
         </div>

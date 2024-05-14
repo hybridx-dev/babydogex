@@ -1,7 +1,10 @@
-import Image from "next/image"
-import Link from "next/link"
+"use client";
+
+import { usePathname } from "next/navigation";
 import { NavItem } from "./nav-item"
 import { BiMenu } from "react-icons/bi"
+import Image from "next/image";
+import Link from "next/link";
 
 type PropsNavbar = {
  items: {
@@ -11,10 +14,25 @@ type PropsNavbar = {
 }
 
 export const Navbar = ({items}: PropsNavbar) => {
+    const pathname = usePathname();
+    const isHomePath = pathname !== '/ai'
     return ( 
         <nav className="z-10">
             {/* md menu */}
-            <div className="w-full flex justify-end md:justify-center items-center mt-5">
+            <div className={`w-full flex justify-end ${isHomePath ? 'md:justify-center' : "justify-between"} items-center mt-5`}>
+                {!isHomePath && (
+                    <Link href={'/'}>
+                        <div className="flex gap-1 items-center">
+                            <Image 
+                                src={'/assets/babydoge-icon.png'}
+                                alt=""
+                                height={500}
+                                width={500}
+                                className="w-10 object-contain"/>
+                            <h4 className="font-bold dot-blue text-xl tracking-wider">Baby<span className="text-yellow-500">Doge</span><span className="text-2xl">X</span></h4>
+                        </div>
+                    </Link>
+                )}
                 <div className="space-x-4 hidden md:block">
                     {items.map((v, i) => (
                         <NavItem 

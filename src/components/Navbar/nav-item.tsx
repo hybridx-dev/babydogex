@@ -16,9 +16,9 @@ export const NavItem: FC<NavItemProps> = (props) => {
         <Link 
             href={props.link} 
             className={
-                cn("font-bold text-lg hover:bg-yellow-600 px-3 py-1 hover:text-white hover:rounded-md", 
+                cn("font-bold text-lg hover:bg-yellow-600 px-3 py-1 hover:text-black hover:rounded-md", 
                 props.className, 
-                pathname === props.link ? 'bg-yellow-600 text-white rounded' : 'border-b border-solid border-b-yellow-500')
+                pathname === props.link ? 'bg-yellow-600 text-black rounded' : 'border-b border-solid border-b-yellow-500')
             }>
             {props.title}
         </Link>
