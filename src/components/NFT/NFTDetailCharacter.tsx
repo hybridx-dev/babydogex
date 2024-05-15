@@ -18,7 +18,7 @@ const ItemTrait = ({header, desc, footer}: {header: string, desc: string, footer
 
 export const NFTDetailCharacter = () => {
     return ( 
-        <div className="flex-shrink-0 md:w-[30rem] w-full">
+        <div className="flex-shrink-0 md:w-[30rem] w-full self-start">
             <div className="relative md:h-[30rem] h-[20rem] rounded-t-md overflow-hidden">
                 <Image 
                     src={'/assets/babydoge-nft.png'}
