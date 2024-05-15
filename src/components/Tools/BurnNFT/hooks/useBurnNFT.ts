@@ -23,7 +23,7 @@ export const useBurnNFT = () => {
       queryKey: ["fetchNFT"],
       queryFn: () =>
         listTokensOfOwner(
-          "0x9c81870b2a355a206f85e61a80a2e85b501aa213",
+          account.address,
           WOJAX_CONTRACT_ADDRESS_ERC721HX,
           chainID
         ),
