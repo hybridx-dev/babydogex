@@ -4,6 +4,7 @@ import { Button } from "../../ui/button";
 import { calculationFee, RGBDataURL } from "../../../lib";
 import { useBurnNFT } from "./hooks";
 import { formatUnits } from "viem";
+import { useToolTabs } from "../../../hooks";
 
 export const BurnNFT = () => {
     const { 
@@ -15,6 +16,8 @@ export const BurnNFT = () => {
         nftsData, 
         selectedNFTs 
     } = useBurnNFT()
+    const setTab = useToolTabs((state) => state.setTab);
+
     const selectedNFTsLength = Object.keys(selectedNFTs).length
     return ( 
         <div className="p-4">
@@ -58,7 +61,7 @@ export const BurnNFT = () => {
                     </div>
                 )}
                 {!loadingNFT && (!nftsData || !nftsData.length) && (
-                    <p className="text-xs text-center">There is no nft that you have, <br/>use <span className="text-yellow-500">Mint NFT</span> to get it</p>
+                    <p className="text-xs text-center">There is no nft that you have, <br/>use <span className="text-yellow-500 cursor-pointer" onClick={() => setTab('Mint NFT')}>Mint NFT</span> to get it</p>
                 )}
             </div>
 

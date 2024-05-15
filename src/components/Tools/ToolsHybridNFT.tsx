@@ -5,6 +5,7 @@ import { Convert } from "./Convert";
 import { ComponentProps, useState } from "react";
 import { MintNFT } from "./MintNFT";
 import { BurnNFT } from "./BurnNFT";
+import { useToolTabs } from "../../hooks";
 
 type ToolsItemProps = {
     title: string;
@@ -14,7 +15,7 @@ const ToolItems = ({active, title, ...props}: ToolsItemProps & ComponentProps<'b
 
 export const ToolsHybridNFT = () => {
     const account = useAccount();
-    const [tab, setTab] = useState<"Convert" | "Mint NFT" | "Burn NFT">("Convert")
+    const { tab, setTab } = useToolTabs()
 
     return ( 
         <div className="relative">
