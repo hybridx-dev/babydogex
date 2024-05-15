@@ -46,7 +46,7 @@ export default function RootLayout({
                   { link: '/ai', title: 'AI' }
                 ]
             }/>
-            <div className="mt-2 p-2 flex-grow flex flex-col">
+            <div className="mt-2 flex-grow flex flex-col">
               {children}
             </div>
           </main>

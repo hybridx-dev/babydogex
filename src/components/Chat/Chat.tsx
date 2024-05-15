@@ -76,8 +76,8 @@ And the cherry on top? It treats your crypto wallet like royalty, slashing gas f
       []
     )
     return ( 
-      <div className={`flex flex-col w-full sticky max-w-[30rem] mx-auto top-10 self-start ${inter.className}`}>
-        <div className={`h-[30rem] overflow-auto p-4 flex-col-reverse flex gap-2`}>
+      <div className={`flex flex-col w-full md:sticky max-w-[30rem] mx-auto top-10 self-start ${inter.className}`}>
+        <div className={`h-[20rem] md:h-[30rem] overflow-auto p-4 flex-col-reverse flex gap-2`}>
           {chats.map((v, i) => {
             if(v.type === 'bot'){
               return <BotBubbleChat key={`bot_chat_${i}`} text={v.text}/>

@@ -28,7 +28,7 @@ export const Navbar = ({items}: PropsNavbar) => {
                                 alt=""
                                 height={500}
                                 width={500}
-                                className="w-10 object-contain"/>
+                                className="w-6 object-contain"/>
                             <h4 className="font-bold dot-blue text-xl tracking-wider">Baby<span className="text-yellow-500">Doge</span><span className="text-2xl">X</span></h4>
                         </div>
                     </Link>

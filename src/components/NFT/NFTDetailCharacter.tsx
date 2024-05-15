@@ -18,14 +18,14 @@ const ItemTrait = ({header, desc, footer}: {header: string, desc: string, footer
 
 export const NFTDetailCharacter = () => {
     return ( 
-        <div className="flex-shrink-0">
-            <Image 
-                src={'/assets/babydoge-nft.png'}
-                alt="babydoge-nft"
-                height={500}
-                width={500}
-                className="h-[31.3rem] object-contain"/>
-            <Accordion type="single" collapsible defaultValue="item-1" className="bg-[#343334]">
+        <div className="flex-shrink-0 md:w-[30rem] w-full">
+            <div className="relative md:h-[30rem] h-[20rem] rounded-t-md overflow-hidden">
+                <Image 
+                    src={'/assets/babydoge-nft.png'}
+                    alt="babydoge-nft"
+                    layout="fill"/>
+            </div>
+            <Accordion type="single" collapsible defaultValue="item-1" className="bg-[#343334] rounded-b-md">
                 <AccordionItem value="item-1">
                     <AccordionTrigger className="p-4">
                         <div className="flex gap-2 items-center">
@@ -34,7 +34,7 @@ export const NFTDetailCharacter = () => {
                         </div>
                     </AccordionTrigger>
                     <AccordionContent className={`p-2 ${inter.className}`}>
-                        <div className="grid grid-cols-3 gap-2">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                             <ItemTrait header="BACKGROUND" desc="Lavender... 3%" footer="Floor: 0.077 ETH"/>
                             <ItemTrait header="BACKGROUND" desc="Lavender... 3%" footer="Floor: 0.077 ETH"/>
                             <ItemTrait header="BACKGROUND" desc="Lavender... 3%" footer="Floor: 0.077 ETH"/>
@@ -51,7 +51,7 @@ export const NFTDetailCharacter = () => {
                             <p>Personality</p>
                         </div>
                     </AccordionTrigger>
-                    <AccordionContent className={`p-4 ${inter.className} text-xs break-words w-[30rem]`}>
+                    <AccordionContent className={`p-4 ${inter.className} text-xs`}>
                         Baby Doge Army is a collection of 10,000 adoptable baby doges. A unique digital art collection waiting to be rescued on the Ethereum Blockchain. Each one has been generated then hand-groomed by our team to be fit for adoption. Join us on our mission and have a good time. Having a Baby Doge grants you creative and commercial rights, as well as inclusion in the community, plus feel great knowing your NFT helped make a difference to save dogs in need.
                     </AccordionContent>
                 </AccordionItem>
