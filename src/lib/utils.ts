@@ -5,6 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export const calculationFee = (fee: bigint, amount: number) =>
+  (fee * BigInt(amount) * BigInt(125)) / BigInt(100);
+
 const keyStr =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 const triplet = (e1: number, e2: number, e3: number) =>

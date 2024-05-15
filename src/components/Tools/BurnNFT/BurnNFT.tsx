@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { BiLoader } from "react-icons/bi";
 import { Button } from "../../ui/button";
-import { RGBDataURL } from "../../../lib/utils";
+import { RGBDataURL } from "../../../lib";
 
 export const BurnNFT = () => {
     return ( 
