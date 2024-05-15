@@ -20,7 +20,6 @@ export const useMintNFT = () => {
 
         try {
             if (amount && fee) {
-                alert(amount)
                 const tx = await minNFT(fee, amount);
                 await waitForTransactionReceipt(config, {
                     hash: tx,
