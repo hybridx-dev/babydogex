@@ -13,7 +13,7 @@ export const useBurnNFT = () => {
     const chainID = useChainId();
     const [selectedNFTs, setSelectedNFTs] = useState<Record<number, string>>({});
     const [loadingBurn, setLoadingBurn] = useState(false);
-    const { fee } = useMintNFT();
+    const { fee, reloadBalance } = useMintNFT();
   
     const {
       data: nftsData,
@@ -27,7 +27,7 @@ export const useBurnNFT = () => {
           WOJAX_CONTRACT_ADDRESS_ERC721HX,
           chainID
         ),
-      enabled: !!account.address && !!chainID,
+      enabled: account.isConnected && !!account.address && !!chainID,
       initialData: undefined,
     });
   
@@ -53,8 +53,9 @@ export const useBurnNFT = () => {
             hash: result,
             retryDelay: 1500,
           });
-          setSelectedNFTs({});
           await reloadNFT();
+          await reloadBalance();
+          setSelectedNFTs({});
           toast.success('success')
           // TODO: update balance
         }

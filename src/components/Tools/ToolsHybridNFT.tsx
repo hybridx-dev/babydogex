@@ -1,11 +1,11 @@
 "use client";
 
 import { useAccount } from "wagmi";
-import { Convert } from "./Convert";
-import { ComponentProps, useState } from "react";
+import { ComponentProps } from "react";
 import { MintNFT } from "./MintNFT";
 import { BurnNFT } from "./BurnNFT";
-import { useToolTabs } from "../../hooks";
+import { useBalance, useToolTabs } from "../../hooks";
+import Image from "next/image";
 
 type ToolsItemProps = {
     title: string;
@@ -15,10 +15,11 @@ const ToolItems = ({active, title, ...props}: ToolsItemProps & ComponentProps<'b
 
 export const ToolsHybridNFT = () => {
     const account = useAccount();
-    const { tab, setTab } = useToolTabs()
+    const { tab, setTab } = useToolTabs();
+    const { balance } = useBalance();
 
     return ( 
-        <div className="relative">
+        <div className="relative bg-[#2A272A] text-white rounded-md">
             {!account.isConnected && (
                 <div className="absolute inset-0 bg-black/50 rounded-lg backdrop-blur-[1px] flex justify-center items-center">
                     <w3m-button/>
@@ -31,15 +32,32 @@ export const ToolsHybridNFT = () => {
                 </div>
             )}
 
-            <div className="flex border-b border-solid border-b-yellow-500 p-2">
+            <div className="flex items-center gap-2 justify-center font-bold">
+                {account.isConnected && balance ? (
+                    <>
+                        <div className="w-7 h-7 bg-white overflow-hidden rounded-full relative">
+                            <Image 
+                                src={'/assets/babydoge-icon.png'}
+                                alt="babydogex"
+                                fill={true}
+                                className="w-6 md:w-7 object-contain"/>
+                        </div>
+                        <div>
+                            <p className="text-[0.6rem] leading-[0.5rem] text-center">Balance</p>
+                            <p>{balance.format} {balance.symbol}</p>
+                        </div>
+                    </>
+                ) : "" }
+            </div>
+
+            <div className="flex border-b border-solid border-b-yellow-300 p-2">
                 {
-                    ["Convert", "Mint NFT", "Burn NFT"].map((v, i) => (
+                    ["Mint NFT", "Burn NFT"].map((v, i) => (
                         <ToolItems active={v === tab} title={v} key={`item_tool_${i}`} onClick={() => setTab(v as any)}/>
                     ))
                 }
             </div>
 
-            {tab === 'Convert' && <Convert/>}
             {tab === 'Burn NFT' && <BurnNFT/>}
             {tab === 'Mint NFT' && <MintNFT/>}
         </div>

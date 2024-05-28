@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 type State = {
-    tab: "Convert" | "Mint NFT" | "Burn NFT"
+    tab: "Mint NFT" | "Burn NFT"
 }
 
 type Action = {
@@ -9,6 +9,6 @@ type Action = {
 }
 
 export const useToolTabs = create<State & Action>((set) => ({
-    tab: "Convert",
+    tab: "Mint NFT",
     setTab: (tab) => set(() => ({ tab }))
 }))

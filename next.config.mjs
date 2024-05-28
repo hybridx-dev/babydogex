@@ -16,6 +16,12 @@ const nextConfig = {
         },
       ],
     },
+    webpack: (config) => {
+      // web3modal
+      config.externals.push('pino-pretty', 'lokijs', 'encoding')
+      
+      return config;
+    },
   }
 
 export default nextConfig;

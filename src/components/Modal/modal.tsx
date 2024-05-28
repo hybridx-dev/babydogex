@@ -1,11 +1,13 @@
 import { type FC, type PropsWithChildren } from "react";
+import { cn } from "../../lib";
 
 interface ModalProps extends PropsWithChildren {
   close: () => void;
   open: boolean;
+  className?: string
 }
 
-export const Modal: FC<ModalProps> = ({ close, open, children }) => {
+export const Modal: FC<ModalProps> = ({ close, open, children, className }) => {
   return (
     <div
       className={
@@ -17,7 +19,10 @@ export const Modal: FC<ModalProps> = ({ close, open, children }) => {
     >
       <div
         className={
-          "p-4 bg-black/80 backdrop-blur text-white rounded min-w-[80%] md:min-w-[30rem] min-h-[20rem] flex flex-col ring-1 ring-stone-950"
+          cn(
+            "p-4 bg-black/80 backdrop-blur text-white rounded min-w-[80%] md:min-w-[30rem] min-h-[20rem] flex flex-col ring-1 ring-stone-950",
+            className
+          )
         }
         onClick={(e) => e.stopPropagation()}
       >

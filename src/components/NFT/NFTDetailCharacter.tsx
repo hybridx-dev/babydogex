@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import { Inter } from "next/font/google";
 import { MdLabel } from "react-icons/md";
 import { BsPersonArmsUp } from "react-icons/bs";
+import { useNFTCharacter } from "../../hooks";
 
 const inter = Inter({subsets: ['latin']});
 
@@ -17,11 +18,12 @@ const ItemTrait = ({header, desc, footer}: {header: string, desc: string, footer
 )
 
 export const NFTDetailCharacter = () => {
+    const nft = useNFTCharacter((state) => state.nft);
     return ( 
         <div className="flex-shrink-0 md:w-[30rem] w-full self-start">
             <div className="relative md:h-[30rem] h-[20rem] rounded-t-md overflow-hidden">
                 <Image 
-                    src={'/assets/babydoge-nft.png'}
+                    src={nft?.image}
                     alt="babydoge-nft"
                     layout="fill"/>
             </div>

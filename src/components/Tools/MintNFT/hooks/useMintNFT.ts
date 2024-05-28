@@ -4,11 +4,13 @@ import { toast } from "react-toastify";
 import { type RpcError } from "viem";
 import { waitForTransactionReceipt } from "wagmi/actions";
 import { config } from "../../../../config";
+import { useBalance } from "../../../../hooks";
 
 export const useMintNFT = () => {
     const [amount, setAmount] = useState<undefined | number>();
     const [fee, setFee] = useState(BigInt(0));
     const [loadingMint, setLoadingMint] = useState(false);
+    const { balance, reloadBalance } = useBalance();
 
     useEffect(() => {
         checkFee().then(setFee);
@@ -25,7 +27,7 @@ export const useMintNFT = () => {
                     hash: tx,
                     retryDelay: 1500,
                 });
-                // TODO: update balance;
+                await reloadBalance();
                 setAmount(0);
                 toast.success('success');
             }            
@@ -42,6 +44,8 @@ export const useMintNFT = () => {
         setAmount,
         fee,
         loadingMint,
-        handleMintNFT
+        handleMintNFT,
+        balance,
+        reloadBalance
     }
 }
