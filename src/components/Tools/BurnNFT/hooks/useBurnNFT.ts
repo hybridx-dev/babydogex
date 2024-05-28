@@ -57,7 +57,6 @@ export const useBurnNFT = () => {
           await reloadBalance();
           setSelectedNFTs({});
           toast.success('success')
-          // TODO: update balance
         }
       } catch (error: any) {
         toast.error((error as RpcError).shortMessage);

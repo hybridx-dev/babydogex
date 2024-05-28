@@ -14,30 +14,27 @@ import Image from "next/image";
 import { RGBDataURL } from "../../lib";
 import { Button } from "../../components/ui/button";
 import { useNFTCharacter } from "../../hooks";
+import { useQuery } from "@tanstack/react-query";
 
 export default function AI() {
   const [modalOpen, setModalOpen] = useState(true);
-  const [loading, setLoading] = useState(true);
-  const [nftData, setNftData] = useState<any[]>([]);
   const { nft, setNFT} = useNFTCharacter();
   const account = useAccount();
-
-  useEffect(
-    () => {
-      (
-        async () => {
-          if(account.isConnected){
-            const data = await listTokensOfOwner(account.address, WOJAX_CONTRACT_ADDRESS_ERC721HX, 8453);
-            if(data){
-              setNftData(data);
-            }
-            setLoading(false);
-          }
-        }
-      )()
-    },
-    [account.isConnected, account.address]
-  )
+  const {
+    data: nftData,
+    refetch: reloadNFT,
+    isLoading: loading,
+  } = useQuery({
+    queryKey: ["fetchNFT"],
+    queryFn: () =>
+      listTokensOfOwner(
+        account.address,
+        WOJAX_CONTRACT_ADDRESS_ERC721HX,
+        8453
+      ),
+    enabled: account.isConnected && !!account.address,
+    initialData: null,
+  });
 
   return (
     <div className="flex-grow flex-col-reverse md:flex-row flex justify-between items-center gap-12 z-10 mt-5">
@@ -56,10 +53,10 @@ export default function AI() {
             </div>
           )}
           {account.isConnected && loading && <Loader2Icon className="animate-spin" size={30}/>}
-          {account.isConnected && !loading && !nftData.length && (
+          {account.isConnected && !loading && nftData && !nftData.length && (
             <p className="text-xl text-center">There is no NFT that you have, <br/>use <Link href={'/'} className="text-yellow-500 cursor-pointer">Mint NFT</Link> to get it</p>
           )}
-          {account.isConnected && !loading && !!nftData.length && (
+          {account.isConnected && !loading && nftData && !!nftData.length && (
             <div className="flex flex-col gap-4 items-center">
               <h1 className="text-center md:text-xl max-w-[15rem]">Select the character you want to chat with</h1>
               <Carousel
