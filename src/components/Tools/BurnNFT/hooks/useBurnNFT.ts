@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { useAccount, useChainId } from "wagmi";
+import { useAccount } from "wagmi";
 import { useMintNFT } from "../../MintNFT/hooks";
 import { burnNFT, listTokensOfOwner } from "../../../../api";
 import { waitForTransactionReceipt } from "wagmi/actions";
@@ -10,7 +10,6 @@ import { config, WOJAX_CONTRACT_ADDRESS_ERC721HX } from "../../../../config";
 
 export const useBurnNFT = () => {
     const account = useAccount();
-    const chainID = useChainId();
     const [selectedNFTs, setSelectedNFTs] = useState<Record<number, string>>({});
     const [loadingBurn, setLoadingBurn] = useState(false);
     const { fee, reloadBalance } = useMintNFT();
@@ -25,9 +24,9 @@ export const useBurnNFT = () => {
         listTokensOfOwner(
           account.address,
           WOJAX_CONTRACT_ADDRESS_ERC721HX,
-          chainID
+          account.chainId
         ),
-      enabled: account.isConnected && !!account.address && !!chainID,
+      enabled: account.isConnected && !!account.address && !!account.chainId,
       initialData: undefined,
     });
   

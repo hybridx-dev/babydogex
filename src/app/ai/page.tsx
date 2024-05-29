@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Chat, Modal, NFTDetailCharacter } from "../../components";
 import { Loader2Icon } from "lucide-react";
 import { listTokensOfOwner } from "../../api";
@@ -30,9 +30,9 @@ export default function AI() {
       listTokensOfOwner(
         account.address,
         WOJAX_CONTRACT_ADDRESS_ERC721HX,
-        8453
+        account.chainId
       ),
-    enabled: account.isConnected && !!account.address,
+    enabled: account.isConnected && !!account.address && !!account.chainId,
     initialData: null,
   });
 
@@ -53,7 +53,7 @@ export default function AI() {
             </div>
           )}
           {account.isConnected && loading && <Loader2Icon className="animate-spin" size={30}/>}
-          {account.isConnected && !loading && nftData && !nftData.length && (
+          {account.isConnected && !loading && !nftData?.length && (
             <p className="text-xl text-center">There is no NFT that you have, <br/>use <Link href={'/'} className="text-yellow-500 cursor-pointer">Mint NFT</Link> to get it</p>
           )}
           {account.isConnected && !loading && nftData && !!nftData.length && (

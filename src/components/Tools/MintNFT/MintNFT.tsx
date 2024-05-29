@@ -8,7 +8,7 @@ export const MintNFT = () => {
     const { amount, fee, handleMintNFT, loadingMint, setAmount, balance } = useMintNFT();
     const isInsufficient = balance && amount ? amount > +balance.format : false;
     return ( 
-        <div className="p-4 space-y-2">
+        <div className="p-4 space-y-2 self-start">
             <form className="flex items-center" onSubmit={handleMintNFT}>
                 <input 
                     placeholder="Amount to Mint" 

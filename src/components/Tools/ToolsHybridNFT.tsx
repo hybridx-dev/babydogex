@@ -19,7 +19,7 @@ export const ToolsHybridNFT = () => {
     const { balance } = useBalance();
 
     return ( 
-        <div className="relative bg-[#2A272A] text-white rounded-md">
+        <div className="relative bg-[#2A272A] text-white rounded-md flex-grow">
             {!account.isConnected && (
                 <div className="absolute inset-0 bg-black/50 rounded-lg backdrop-blur-[1px] flex justify-center items-center">
                     <w3m-button/>

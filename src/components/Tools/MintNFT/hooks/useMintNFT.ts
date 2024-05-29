@@ -5,16 +5,19 @@ import { type RpcError } from "viem";
 import { waitForTransactionReceipt } from "wagmi/actions";
 import { config } from "../../../../config";
 import { useBalance } from "../../../../hooks";
+import { useAccount } from "wagmi";
 
 export const useMintNFT = () => {
     const [amount, setAmount] = useState<undefined | number>();
     const [fee, setFee] = useState(BigInt(0));
     const [loadingMint, setLoadingMint] = useState(false);
     const { balance, reloadBalance } = useBalance();
-
+    const account = useAccount();
     useEffect(() => {
-        checkFee().then(setFee);
-    }, []);
+        if(account.chainId === 56){
+            checkFee().then(setFee);
+        }
+    }, [account.chainId]);
 
     const handleMintNFT = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

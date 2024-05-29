@@ -32,7 +32,7 @@ export const BurnNFT = () => {
             </div>
 
             <div
-                className={`flex-grow my-2 grid ${
+                className={`my-2 grid ${
                 nftsData ? "grid-cols-2" : "place-items-center"
                 } gap-4 p-2 h-[15rem] overflow-auto`}
             >
