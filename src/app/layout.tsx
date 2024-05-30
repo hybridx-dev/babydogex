@@ -2,14 +2,14 @@ import type { Metadata, Viewport } from "next";
 import LocalFont from "next/font/local";
 import "./globals.css";
 import 'react-toastify/dist/ReactToastify.css';
+import '@rainbow-me/rainbowkit/styles.css';
 import { BubbleAnimation, Navbar, Revenue } from "../components";
-import { Providers } from "./providers";
-import { cookieToInitialState } from "wagmi";
-import { config } from "../config";
-import { headers } from "next/headers";
+import { Provider } from "./providers";
 import { ToastContainer } from "react-toastify";
 
 const Poet = LocalFont({ src: "./fonts/PoetsenOne-Regular.ttf" });
+
+export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "BabyDogeX",
@@ -28,12 +28,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialState = cookieToInitialState(config, headers().get('cookie'))
-
   return (
     <html lang="en" className="dark">
       <body className={Poet.className}>
-        <Providers initialState={initialState}>
+        <Provider>
           <div className="overflow-hidden fixed inset-0">
             <BubbleAnimation/>
           </div>
@@ -50,7 +48,7 @@ export default function RootLayout({
               {children}
             </div>
           </main>
-        </Providers>
+        </Provider>
         <ToastContainer/>
       </body>
     </html>

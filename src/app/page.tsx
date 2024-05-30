@@ -42,7 +42,7 @@ export default function Home() {
       </div>
 
       <div className={`md:mx-auto w-full md:w-auto bg-black z-10 ${inter.className}`}>
-        <div className="md:max-w-[28rem] flex flex-col flex-grow rounded-lg shadow-xl">
+        <div className="md:min-w-[22rem] flex flex-col flex-grow rounded-lg shadow-xl">
           <ToolsHybridNFT/>
         </div>
       </div>

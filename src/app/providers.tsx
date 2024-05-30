@@ -1,30 +1,23 @@
-'use client'
+'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { createWeb3Modal } from '@web3modal/wagmi/react'
-import { type State, WagmiProvider } from 'wagmi'
-import { config, projectId, WOJAX_CONTRACT_ADDRESS_ERC20HX } from '../config'
-import { type PropsWithChildren } from 'react'
+import * as React from 'react';
+import {
+  RainbowKitProvider,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi';
+import { config } from '../config';
 
-const queryClient = new QueryClient()
 
-if (!projectId) {
-  throw new Error('Project ID is not defined')
-}
+const queryClient = new QueryClient();
 
-createWeb3Modal({
-  wagmiConfig: config,
-  projectId,
-})
-
-interface ProviderProps extends PropsWithChildren {
-  initialState: State | undefined
-}
-
-export function Providers({ initialState, children } : ProviderProps) {
+export function Provider({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiProvider config={config} initialState={initialState}>
-        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider theme={darkTheme()}>{children}</RainbowKitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
-  )
+  );
 }

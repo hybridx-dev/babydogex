@@ -1,6 +1,7 @@
 
 "use client";
 
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useState } from "react";
 import { Chat, Modal, NFTDetailCharacter } from "../../components";
 import { Loader2Icon } from "lucide-react";
@@ -49,7 +50,8 @@ export default function AI() {
         <div className="flex justify-center items-center flex-grow">
           {account.isConnected && (
             <div className="absolute top-2 right-2">
-              <w3m-button/>
+              {/* <w3m-button/> */}
+              <ConnectButton />
             </div>
           )}
           {account.isConnected && loading && <Loader2Icon className="animate-spin" size={30}/>}
@@ -90,7 +92,8 @@ export default function AI() {
               <Button onClick={() => setModalOpen(false)} className="bg-yellow-500 text-white px-8 py-2 hover:bg-yellow-500" disabled={!nft}>Chat</Button>
             </div>
           )}
-          {!account.isConnected && <w3m-button/>}
+          {!account.isConnected && <ConnectButton/>}
+          {/* {!account.isConnected && <w3m-button/>} */}
         </div>
       </Modal>
     </div>

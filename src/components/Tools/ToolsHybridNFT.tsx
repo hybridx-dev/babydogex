@@ -6,6 +6,7 @@ import { MintNFT } from "./MintNFT";
 import { BurnNFT } from "./BurnNFT";
 import { useBalance, useToolTabs } from "../../hooks";
 import Image from "next/image";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 type ToolsItemProps = {
     title: string;
@@ -22,13 +23,15 @@ export const ToolsHybridNFT = () => {
         <div className="relative bg-[#2A272A] text-white rounded-md flex-grow">
             {!account.isConnected && (
                 <div className="absolute inset-0 bg-black/50 rounded-lg backdrop-blur-[1px] flex justify-center items-center">
-                    <w3m-button/>
+                    {/* <w3m-button/> */}
+                    <ConnectButton/>
                 </div>
             )}
 
             {account.isConnected && (
                 <div className="p-2 flex justify-center">
-                    <w3m-button/>
+                    {/* <w3m-button/> */}
+                    <ConnectButton/>
                 </div>
             )}
 
