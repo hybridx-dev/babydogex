@@ -23,7 +23,7 @@ export const useBalance = () => {
         setContractAddress,
         balance: balance ? {
             ...balance,
-            format: formatUnits(balance.value, balance.decimals)
+            format: formatUnits(BigInt(parseInt(balance.value as any)), balance.decimals)
         } : undefined,
         reloadBalance,
         state: isLoading ? 'loading' : 'finish'

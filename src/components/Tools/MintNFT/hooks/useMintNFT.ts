@@ -6,6 +6,7 @@ import { waitForTransactionReceipt } from "wagmi/actions";
 import { config } from "../../../../config";
 import { useBalance } from "../../../../hooks";
 import { useAccount } from "wagmi";
+import { wait } from "../../../../lib";
 
 export const useMintNFT = () => {
     const [amount, setAmount] = useState<undefined | number>();
@@ -30,6 +31,7 @@ export const useMintNFT = () => {
                     hash: tx,
                     retryDelay: 1500,
                 });
+                await wait(2000);
                 await reloadBalance();
                 setAmount(0);
                 toast.success('success');

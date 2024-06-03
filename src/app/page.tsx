@@ -17,7 +17,7 @@ export default function Home() {
             className="w-28 object-contain"/>
         <div className="space-y-4 md:w-96">
           <h4 className="font-bold dot-blue text-5xl tracking-wider">Baby<span className="text-yellow-500">Doge</span><span className="text-4xl">X</span></h4>
-          <p className={`${inter.className}`}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <p className={`${inter.className}`}>The perfect fusion of adorable digital collectibles and innovative hybrid token technology</p>
           <div className="flex gap-4 flex-wrap justify-center">
             <Link 
               href={"https://dexscreener.com/bsc/0x7be99fa19d8c2c8cefe91712bd559e4edd53bfa8"} 
@@ -32,10 +32,10 @@ export default function Home() {
               PancakeSwap
             </Link>
             <Link
-              href={"/"}
+              href={"https://opensea.io/collection/babydogex-nft"}
               target="_blank" 
               className="bg-[#5020e2] px-10 py-2 rounded-md hover:bg-[#5020e2] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 shadow-md text-white">
-              Opensea
+              OpenSea
             </Link>
           </div>
         </div>

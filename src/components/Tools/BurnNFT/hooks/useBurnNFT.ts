@@ -7,6 +7,7 @@ import { waitForTransactionReceipt } from "wagmi/actions";
 import { toast } from "react-toastify";
 import { RpcError } from "viem";
 import { config, WOJAX_CONTRACT_ADDRESS_ERC721HX } from "../../../../config";
+import { wait } from "../../../../lib";
 
 export const useBurnNFT = () => {
     const account = useAccount();
@@ -52,6 +53,7 @@ export const useBurnNFT = () => {
             hash: result,
             retryDelay: 1500,
           });
+          await wait(2000);
           await reloadNFT();
           await reloadBalance();
           setSelectedNFTs({});
