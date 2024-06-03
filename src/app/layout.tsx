@@ -36,7 +36,7 @@ export default function RootLayout({
             <BubbleAnimation/>
           </div>
           <main className="p-4 lg:container min-h-screen w-full lg:w-10/12 md:p-6 flex flex-col">
-            <Revenue/>
+            {/* <Revenue/> */}
             <Navbar
               items={
                 [

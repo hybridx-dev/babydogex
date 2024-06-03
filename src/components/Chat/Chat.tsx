@@ -11,6 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import styled from 'styled-components';
 import { useNFTCharacter } from "../../hooks";
+import { Button } from "../ui/button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -225,6 +226,7 @@ export const SendChat = () => {
         async (e) => {
           e.preventDefault();
           const teks = (e.target as any).chat.value;
+          refForm.current?.reset();
           setMessages(currentMessages => [
             ...currentMessages,
             {
@@ -237,11 +239,12 @@ export const SendChat = () => {
             ...currentMessages,
             responseBot
           ]);
-          refForm.current?.reset();
         }
       }>
         <input placeholder="what you want to ask?" type="text" name="chat" className="flex-grow bg-transparent text-sm ring-0 outline-none"/>
-        <IoSend size={25} color="#EAB308"/>
+        <Button className="bg-transparent" variant={'ghost'} type="submit">
+          <IoSend size={25} color="#EAB308"/>
+        </Button>
       </form>
     </div>
   );
