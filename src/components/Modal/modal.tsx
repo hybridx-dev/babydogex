@@ -13,7 +13,7 @@ export const Modal: FC<ModalProps> = ({ close, open, children, className }) => {
       className={
         !open
           ? "opacity-0 w-0 overflow-hidden h-0"
-          : "transition-opacity duration-300 ease-out opacity-100 inset-0 fixed bg-black/80 flex justify-center items-center"
+          : "transition-opacity z-10 duration-300 ease-out opacity-100 inset-0 fixed bg-black/80 flex justify-center items-center"
       }
       onClick={close}
     >

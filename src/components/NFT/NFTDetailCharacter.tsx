@@ -20,7 +20,7 @@ const ItemTrait = ({header, desc, footer}: {header: string, desc: string, footer
 export const NFTDetailCharacter = () => {
     const nft = useNFTCharacter((state) => state.nft);
     return ( 
-        <div className="flex-shrink-0 md:w-[30rem] w-full self-start">
+        <div className="flex-shrink-0 md:w-[30rem] w-full self-start z-[1]">
             <div className="relative md:h-[30rem] h-[20rem] rounded-t-md overflow-hidden">
                 <Image 
                     src={nft?.image}
