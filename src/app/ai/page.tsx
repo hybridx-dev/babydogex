@@ -24,7 +24,7 @@ export default function AI() {
   const {
     data: nftData,
     refetch: reloadNFT,
-    isLoading: loading,
+    isFetching: loading,
   } = useQuery({
     queryKey: ["fetchNFT"],
     queryFn: () =>
@@ -54,7 +54,7 @@ export default function AI() {
               <ConnectButton />
             </div>
           )}
-          {account.isConnected && loading && <Loader2Icon className="animate-spin" size={30}/>}
+          {loading && <Loader2Icon className="animate-spin" size={30}/>}
           {account.isConnected && !loading && !nftData?.length && (
             <p className="text-xl text-center">There is no NFT that you have, <br/>use <Link href={'/'} className="text-yellow-500 cursor-pointer">Mint NFT</Link> to get it</p>
           )}
